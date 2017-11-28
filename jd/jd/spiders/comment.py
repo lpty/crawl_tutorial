@@ -25,7 +25,7 @@ class CommentSpider(scrapy.Spider):
         response_json = demjson.decode(txt=response.text, encoding='utf-8')
         if meta['page'] < int(response_json['maxPage']) and meta['page'] < 100:
             meta['page'] += 1
-            url = response._url[:-1]+str(meta['page'])
+            url = u'='.join(response._url.split(u'=')[:-1])+u'='+str(meta['page'])
             yield Request(url, meta=meta, callback=self.parse_comment)
         for c in response_json['comments']:
             content = ''.join(c['content']).strip().replace(u'\n', u'').replace(u'\r', u'').encode('utf-8')
