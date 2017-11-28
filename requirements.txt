@@ -1,0 +1,5 @@
+demjson>=2.2.4
+lxml>=3.7.3
+multiprocessing>=2.6.2.1
+requests>=2.14.2
+scrapy>=1.4.0
